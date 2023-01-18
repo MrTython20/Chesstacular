@@ -1,0 +1,38 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    display: grid;
+    place-items: center;
+    overflow-x: hidden;
+}
+
+ul {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+li {
+    display: grid;
+    place-items: center;
+    list-style: none;
+}
+
+.header-div {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    margin: 0.5px;
+    width: 75px;
+    height: 75px;
+}
+
+.divv {
+    display: flex;
+}
