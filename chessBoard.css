@@ -13,6 +13,7 @@ li {
     display: grid;
     place-items: center;
     list-style: none;
+    font-size: 0;
 }
 
 ul {
@@ -35,16 +36,28 @@ ul {
     margin: 0.5px;
     width: 75px;
     height: 75px;
-    background-color: #2e2821
+    background-color: #3b332a
 }
 
 .lightbox {
     margin: 0.5px;
     width: 75px;
     height: 75px;
-    background-color: #6e5f46
+    background-color: #c7aa78
 }
 
 .divv {
     display: flex;
+}
+
+.all-pwn {
+    width: 45px;
+    transform: scale(.7);
+    position: relative;
+}
+
+.all-img {
+    width: 45px;
+    position: relative;
+    bottom: 5px;
 }
