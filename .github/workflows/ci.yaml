@@ -21,4 +21,4 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY}}
           REMOTE_HOST: "ec2-3-83-44-46.compute-1.amazonaws.com"
           REMOTE_USER: "ubuntu"
-          TARGET: "/var/www/html/"
+          TARGET: "/var/www/html"
