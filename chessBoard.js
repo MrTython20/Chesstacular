@@ -15,24 +15,26 @@ function insertImage() {
 
 insertImage()
 
+
+var timesClicked = 0
+
 document.querySelectorAll('.lightbox, .darkbox').forEach(square => {
+
     square.addEventListener('click', function () {
-        console.log(1)
-        originalSquareId = square.id
-        originalSquareText = square.innerText
-        console.log("original square text: ", originalSquareText)
+        timesClicked++
+        console.log(timesClicked)
 
-        document.querySelectorAll('.lightbox, .darkbox').forEach(newSquare => {
-            newSquare.addEventListener('click', function () {
-                console.log(2)
-                newSquare.innerText = document.getElementById(originalSquareId).innerText
-                document.getElementById(originalSquareId).innerText = ""
-                console.log("new square id", newSquare.id)
-                console.log("new square text", newSquare.innerText)
-
-                insertImage()
-            })
-        })
+        if (timesClicked == 1) {
+            originalSquareId = square.id
+            originalSquareText = square.innerText
+        }
+        if (timesClicked == 2) {
+            newSquareId = square.id
+            document.getElementById(newSquareId).innerText= originalSquareText
+            document.getElementById(originalSquareId).innerText= ""
+            timesClicked = 0
+            insertImage()
+        }
 
     })
 
