@@ -15,8 +15,6 @@ function insertImage() {
 
 insertImage()
 
-
-
 document.querySelectorAll('.lightbox, .darkbox').forEach(square => {
     square.addEventListener('click', function () {
         console.log(1)
