@@ -17,9 +17,18 @@ function insertImage() {
 
 function checkMove(initialSpace, newSpace, pieceType) {
     console.log(initialSpace, newSpace, pieceType)
+    // Pawn validation
     if (pieceType === "Wpawn" || pieceType === "Bpawn") {
         if (pawnValidation(initialSpace, newSpace, pieceType)) {return true}
     }
+    // Knight validation
+    if (pieceType === "Wknight" || pieceType === "Bknight") {
+        if (knightValidation(initialSpace, newSpace, pieceType)) {return true}
+    }
+    // Bishop validation
+    // if (pieceType === "Wbishop" || pieceType === "Bbishop") {
+    //     if (bishopValidation(initialSpace, newSpace, pieceType)) {return true}
+    // }
 }
 
 

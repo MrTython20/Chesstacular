@@ -71,3 +71,18 @@ function pawnValidation(initialSpace, newSpace, pieceType) {
     if (moveValid === true) {return true}
     else {return false}
 }
+
+function knightValidation(initialSpace, newSpace, pieceType) {
+    if (pieceType === "Wknight" || "Bknight") {
+
+        // Check if knight is moving in L pattern
+        if (Math.abs((parseInt(newSpace[0])) - parseInt(initialSpace[0])) + Math.abs((parseInt(newSpace[1])) - parseInt(initialSpace[1])) === 3) 
+        {
+            if (document.getElementById(newSquareId).innerText !== "") {
+                if (document.getElementById(newSquareId).innerText[0] === pieceType[0]) {return false}
+            }
+            return true
+        }
+        return false
+    }
+}
