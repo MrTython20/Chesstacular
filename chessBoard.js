@@ -26,11 +26,18 @@ function checkMove(initialSpace, newSpace, pieceType) {
         if (knightValidation(initialSpace, newSpace, pieceType)) {return true}
     }
     // Bishop validation
-    // if (pieceType === "Wbishop" || pieceType === "Bbishop") {
-    //     if (bishopValidation(initialSpace, newSpace, pieceType)) {return true}
-    // }
+    if (pieceType === "Wbishop" || pieceType === "Bbishop") {
+        if (bishopValidation(initialSpace, newSpace, pieceType)) {return true}
+    }
+    // Rook validation
+    if (pieceType === "Wrook" || pieceType === "Brook") {
+        if (rookValidation(initialSpace, newSpace, pieceType)) {return true}
+    }
+    // Queen validation
+    if (pieceType === "Wqueen" || pieceType === "Bqueen") {
+        if (queenValidation(initialSpace, newSpace, pieceType)) {return true}
+    }
 }
-
 
 insertImage()
 
