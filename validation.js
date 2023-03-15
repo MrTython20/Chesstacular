@@ -86,17 +86,15 @@ function pawnValidation(initialSpace, newSpace, pieceType) {
 }
 
 function knightValidation(initialSpace, newSpace, pieceType) {
-    if (pieceType === "Wknight" || "Bknight") {
 
-        // Check if knight is moving in L pattern
-        if (Math.abs((parseInt(newSpace[0])) - parseInt(initialSpace[0])) === 1 && Math.abs((parseInt(newSpace[1])) - parseInt(initialSpace[1])) === 2)
-        {return true}
-        
-        else if (Math.abs((parseInt(newSpace[0])) - parseInt(initialSpace[0])) === 2 && Math.abs((parseInt(newSpace[1])) - parseInt(initialSpace[1])) === 1)
-        {return true}
+    // Check if knight is moving in L pattern
+    if (Math.abs((parseInt(newSpace[0])) - parseInt(initialSpace[0])) === 1 && Math.abs((parseInt(newSpace[1])) - parseInt(initialSpace[1])) === 2)
+    {return true}
+    
+    else if (Math.abs((parseInt(newSpace[0])) - parseInt(initialSpace[0])) === 2 && Math.abs((parseInt(newSpace[1])) - parseInt(initialSpace[1])) === 1)
+    {return true}
 
-        else {return false}
-    }
+    else {return false}
 }
 
 function bishopValidation(initialSpace, newSpace, pieceType) {
@@ -133,7 +131,7 @@ function bishopValidation(initialSpace, newSpace, pieceType) {
     return true
 }
 
-function IsDiagonalPath(startingX, startingY, xDifference, yDifference) {
+function checkBishopDiagonalPath(startingX, startingY, xDifference, yDifference) {
     xDirection = Math.sign(xDifference)
     yDirection = Math.sign(yDifference)
 
@@ -152,78 +150,67 @@ function IsDiagonalPath(startingX, startingY, xDifference, yDifference) {
 }
 
 function rookValidation(initialSpace, newSpace, pieceType) {
-    if (pieceType === "Wrook" || "Brook") {
-    
-        if (initialSpace[0] === newSpace[0] && initialSpace[1] === newSpace[1]) {return false}
 
-        if (initialSpace[1] === newSpace[1] && initialSpace[0] < newSpace[0]) { // Rook is moving on x axis right
-            for (i = parseInt(initialSpace[0]) + 1; i <= parseInt(newSpace[0]); i++) { // Loop through spaces
-                console.log(i, parseInt(newSpace[1]))
-                if (document.getElementById(i + newSpace[1]).innerText !== "") { // If space is not empty
-                    if (i === parseInt(newSpace[0])) {  // If last space
-                        if (document.getElementById(newSpace[0] + newSpace[1]).innerText[0] === pieceType[0]) {return false} // If own color return false
-                    }
-                    else {return false} // Space is not empty and this is not the last space, piece tried to jump, return false
+    if (initialSpace[0] === newSpace[0] && initialSpace[1] === newSpace[1]) {return false}
+
+    if (initialSpace[1] === newSpace[1] && initialSpace[0] < newSpace[0]) { // Rook is moving on x axis right
+        for (i = parseInt(initialSpace[0]) + 1; i <= parseInt(newSpace[0]); i++) { // Loop through spaces
+            console.log(i, parseInt(newSpace[1]))
+            if (document.getElementById(i + newSpace[1]).innerText !== "") { // If space is not empty
+                if (i === parseInt(newSpace[0])) {  // If last space
+                    if (document.getElementById(newSpace[0] + newSpace[1]).innerText[0] === pieceType[0]) {return false} // If own color return false
                 }
+                else {return false} // Space is not empty and this is not the last space, piece tried to jump, return false
             }
         }
-
-        if (initialSpace[1] === newSpace[1] && initialSpace[0] > newSpace[0]) { // Rook is moving on x axis left
-            for (i = parseInt(initialSpace[0]) - 1; i >= parseInt(newSpace[0]); i--) { // Loop through spaces
-                if (document.getElementById(i + newSpace[1]).innerText !== "") { // If space is not empty
-                    if (i === parseInt(newSpace[0])) {  // If last space
-                        if (document.getElementById(newSpace[0] + newSpace[1]).innerText[0] === pieceType[0]) {return false} // If own color return false
-                    }
-                    else {return false} // Space is not empty and this is not the last space, piece tried to jump, return false
-                }
-            }          
-        }
-        
-        if (initialSpace[0] === newSpace[0] && initialSpace[1] < newSpace[1]) { // Rook is moving on y axis forward
-            for (i = parseInt(initialSpace[1]) + 1; i <= parseInt(newSpace[1]); i++) { // Loop through spaces
-                if (document.getElementById(initialSpace[0] + i).innerText !== "") { // If space is not empty
-                    if (i === parseInt(newSpace[1])) {  // If last space
-                        if (document.getElementById(newSpace[0] + newSpace[1]).innerText[0] === pieceType[0]) {return false} // If own color return false
-                    }
-                    else {return false} // Space is not empty and this is not the last space, piece tried to jump, return false
-                }
-            }          
-        }
-
-        if (initialSpace[0] === newSpace[0] && initialSpace[1] > newSpace[1]) { // Rook is moving on y axis backward
-            for (i = parseInt(initialSpace[1]) - 1; i >= parseInt(newSpace[1]); i--) { // Loop through spaces
-                console.log(initialSpace[0], i)
-                if (document.getElementById(initialSpace[0] + i).innerText !== "") { // If space is not empty
-                    if (i === parseInt(newSpace[1])) {  // If last space
-                        if (document.getElementById(newSpace[0] + newSpace[1]).innerText[0] === pieceType[0]) {return false} // If own color return false
-                    }
-                    else {return false} // Space is not empty and this is not the last space, piece tried to jump, return false
-                }
-            }          
-        }
-        
-        // Check for rook vertical or horizotal move
-        return (parseInt(initialSpace[0]) === parseInt(newSpace[0]) || parseInt(initialSpace[1]) === parseInt(newSpace[1]))        
     }
+
+    if (initialSpace[1] === newSpace[1] && initialSpace[0] > newSpace[0]) { // Rook is moving on x axis left
+        for (i = parseInt(initialSpace[0]) - 1; i >= parseInt(newSpace[0]); i--) { // Loop through spaces
+            if (document.getElementById(i + newSpace[1]).innerText !== "") { // If space is not empty
+                if (i === parseInt(newSpace[0])) {  // If last space
+                    if (document.getElementById(newSpace[0] + newSpace[1]).innerText[0] === pieceType[0]) {return false} // If own color return false
+                }
+                else {return false} // Space is not empty and this is not the last space, piece tried to jump, return false
+            }
+        }          
+    }
+    
+    if (initialSpace[0] === newSpace[0] && initialSpace[1] < newSpace[1]) { // Rook is moving on y axis forward
+        for (i = parseInt(initialSpace[1]) + 1; i <= parseInt(newSpace[1]); i++) { // Loop through spaces
+            if (document.getElementById(initialSpace[0] + i).innerText !== "") { // If space is not empty
+                if (i === parseInt(newSpace[1])) {  // If last space
+                    if (document.getElementById(newSpace[0] + newSpace[1]).innerText[0] === pieceType[0]) {return false} // If own color return false
+                }
+                else {return false} // Space is not empty and this is not the last space, piece tried to jump, return false
+            }
+        }          
+    }
+
+    if (initialSpace[0] === newSpace[0] && initialSpace[1] > newSpace[1]) { // Rook is moving on y axis backward
+        for (i = parseInt(initialSpace[1]) - 1; i >= parseInt(newSpace[1]); i--) { // Loop through spaces
+            console.log(initialSpace[0], i)
+            if (document.getElementById(initialSpace[0] + i).innerText !== "") { // If space is not empty
+                if (i === parseInt(newSpace[1])) {  // If last space
+                    if (document.getElementById(newSpace[0] + newSpace[1]).innerText[0] === pieceType[0]) {return false} // If own color return false
+                }
+                else {return false} // Space is not empty and this is not the last space, piece tried to jump, return false
+            }
+        }          
+    }
+    
+    // Check for rook vertical or horizotal move
+    return (parseInt(initialSpace[0]) === parseInt(newSpace[0]) || parseInt(initialSpace[1]) === parseInt(newSpace[1]))        
 }
 
 function queenValidation(initialSpace, newSpace, pieceType) {
-    if (pieceType === "Wqueen" || "Bqueen") {
 
-        return (rookValidation(initialSpace, newSpace, pieceType) || bishopValidation(initialSpace, newSpace, pieceType))
-    }
+    return (rookValidation(initialSpace, newSpace, pieceType) || bishopValidation(initialSpace, newSpace, pieceType))
 }
 
 function kingValidation(initialSpace, newSpace, pieceType) {
-    if (pieceType === "Wking" || "Bking") {
-        console.log("blablabla")
-    }
 
     // Check & CheckMate
 
-
-
-
     // Castling
-
 }

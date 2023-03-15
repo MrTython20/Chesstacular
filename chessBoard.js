@@ -19,11 +19,11 @@ function checkMove(initialSpace, newSpace, pieceType) {
     console.log(initialSpace, newSpace, pieceType)
     // Pawn validation
     if (pieceType === "Wpawn" || pieceType === "Bpawn") {
-        if (pawnValidation(initialSpace, newSpace, pieceType)) {return true}
+        return (pawnValidation(initialSpace, newSpace, pieceType))
     }
     // Knight validation
     if (pieceType === "Wknight" || pieceType === "Bknight") {
-        if (knightValidation(initialSpace, newSpace, pieceType)) {return true}
+        return (knightValidation(initialSpace, newSpace, pieceType))
     }
     // Bishop validation
     if (pieceType === "Wbishop" || pieceType === "Bbishop") {
@@ -31,15 +31,15 @@ function checkMove(initialSpace, newSpace, pieceType) {
     }
     // Rook validation
     if (pieceType === "Wrook" || pieceType === "Brook") {
-        if (rookValidation(initialSpace, newSpace, pieceType)) {return true}
+        return (rookValidation(initialSpace, newSpace, pieceType))
     }
     // Queen validation
     if (pieceType === "Wqueen" || pieceType === "Bqueen") {
-        if (queenValidation(initialSpace, newSpace, pieceType)) {return true}
+        return (queenValidation(initialSpace, newSpace, pieceType))
     }
     // King validation
     if (pieceType === "Wking" || pieceType === "Bking") {
-        if (kingValidation(initialSpace, newSpace, pieceType)) {return true}
+        return (kingValidation(initialSpace, newSpace, pieceType))
     }
 }
 
