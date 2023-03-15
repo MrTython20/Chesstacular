@@ -117,7 +117,7 @@ function bishopValidation(initialSpace, newSpace, pieceType) {
         return false
     }
 
-    if (!IsDiagonalPath(startingX, startingY, xDifference, yDifference)) {
+    if (!checkBishopDiagonalPath(startingX, startingY, xDifference, yDifference)) {
         return false
     }
 
