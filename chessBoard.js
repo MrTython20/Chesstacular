@@ -27,7 +27,7 @@ function checkMove(initialSpace, newSpace, pieceType) {
     }
     // Bishop validation
     if (pieceType === "Wbishop" || pieceType === "Bbishop") {
-        if (bishopValidation(initialSpace, newSpace, pieceType)) {return true}
+        return bishopValidation(initialSpace, newSpace, pieceType)
     }
     // Rook validation
     if (pieceType === "Wrook" || pieceType === "Brook") {
@@ -36,6 +36,10 @@ function checkMove(initialSpace, newSpace, pieceType) {
     // Queen validation
     if (pieceType === "Wqueen" || pieceType === "Bqueen") {
         if (queenValidation(initialSpace, newSpace, pieceType)) {return true}
+    }
+    // King validation
+    if (pieceType === "Wking" || pieceType === "Bking") {
+        if (kingValidation(initialSpace, newSpace, pieceType)) {return true}
     }
 }
 

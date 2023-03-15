@@ -70,6 +70,19 @@ function pawnValidation(initialSpace, newSpace, pieceType) {
     // Return true or false based on above validation
     if (moveValid === true) {return true}
     else {return false}
+
+    // En Passant
+
+
+
+    // Promotion
+
+
+
+
+
+
+
 }
 
 function knightValidation(initialSpace, newSpace, pieceType) {
@@ -87,16 +100,60 @@ function knightValidation(initialSpace, newSpace, pieceType) {
 }
 
 function bishopValidation(initialSpace, newSpace, pieceType) {
-    if (pieceType === "Wbishop" || "Bbishop") {
-        
-        // Check for bishop diagonal move
-        return (Math.abs(parseInt(newSpace[0]) - parseInt(initialSpace[0])) === Math.abs(parseInt(newSpace[1]) - parseInt(initialSpace[1])))
+    startingX = parseInt(initialSpace[0])
+    startingY = parseInt(initialSpace[1])
+
+    endingX = parseInt(newSpace[0])
+    endingY = parseInt(newSpace[1])
+
+    xDifference = endingX - startingX
+    yDifference = endingY - startingY
+
+    // Verify bishop moving in a diagonal pattern
+    if (Math.abs(xDifference) !== Math.abs(yDifference)) {
+        return false
     }
+
+    // Check not taking self
+    if (startingX === endingX && startingY === endingY) {
+        return false
+    }
+
+    if (!IsDiagonalPath(startingX, startingY, xDifference, yDifference)) {
+        return false
+    }
+
+    newSpaceElement = document.getElementById(`${endingX}${endingY}`)
+    
+    // Check not taking piece of same color
+    if (pieceType[0] === newSpaceElement.innerText[0]) {
+        return false
+    }
+
+    return true
+}
+
+function IsDiagonalPath(startingX, startingY, xDifference, yDifference) {
+    xDirection = Math.sign(xDifference)
+    yDirection = Math.sign(yDifference)
+
+    for (i = 1; i < Math.abs(xDifference); i++) {
+        passingX = startingX + (i * xDirection)
+        passingY = startingY + (i * yDirection)
+        
+        passingSpace = document.getElementById(`${passingX}${passingY}`)
+       
+        if (passingSpace.innerText != "") {
+            return false
+        }
+    }
+
+    return true
 }
 
 function rookValidation(initialSpace, newSpace, pieceType) {
     if (pieceType === "Wrook" || "Brook") {
-
+    
         if (initialSpace[0] === newSpace[0] && initialSpace[1] === newSpace[1]) {return false}
 
         if (initialSpace[1] === newSpace[1] && initialSpace[0] < newSpace[0]) { // Rook is moving on x axis right
@@ -108,7 +165,7 @@ function rookValidation(initialSpace, newSpace, pieceType) {
                     }
                     else {return false} // Space is not empty and this is not the last space, piece tried to jump, return false
                 }
-            }          
+            }
         }
 
         if (initialSpace[1] === newSpace[1] && initialSpace[0] > newSpace[0]) { // Rook is moving on x axis left
@@ -151,13 +208,22 @@ function rookValidation(initialSpace, newSpace, pieceType) {
 }
 
 function queenValidation(initialSpace, newSpace, pieceType) {
-    if (pieceType === "Wqueen" || "Wqueen") {
+    if (pieceType === "Wqueen" || "Bqueen") {
 
         return (rookValidation(initialSpace, newSpace, pieceType) || bishopValidation(initialSpace, newSpace, pieceType))
-
     }
 }
 
+function kingValidation(initialSpace, newSpace, pieceType) {
+    if (pieceType === "Wking" || "Bking") {
+        console.log("blablabla")
+    }
+
+    // Check & CheckMate
 
 
 
+
+    // Castling
+
+}
