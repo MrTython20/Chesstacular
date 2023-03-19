@@ -55,7 +55,7 @@ function pawnValidation(initialSpace, newSpace, pieceType) {
 
         // Pawn can move 2 spaces forward on opening move
         else if (parseInt(initialSpace[1]) === 7) {
-            // Pawn cannot move diagonally
+        // Pawn cannot move diagonally
             if ((parseInt(newSpace[1]) === 5)) {
                 if (parseInt(initialSpace[0]) !== parseInt(newSpace[0])) {
                     moveValid = false
@@ -70,42 +70,54 @@ function pawnValidation(initialSpace, newSpace, pieceType) {
     // Return true or false based on above validation
     if (moveValid === true) {return true}
     else {return false}
-
-    // En Passant
-
-
-
-    // Promotion
-
-
-
-
-
-
-
 }
 
 function knightValidation(initialSpace, newSpace, pieceType) {
 
-    // Check if knight is moving in L pattern
-    if (Math.abs((parseInt(newSpace[0])) - parseInt(initialSpace[0])) === 1 && Math.abs((parseInt(newSpace[1])) - parseInt(initialSpace[1])) === 2)
-    {return true}
-    
-    else if (Math.abs((parseInt(newSpace[0])) - parseInt(initialSpace[0])) === 2 && Math.abs((parseInt(newSpace[1])) - parseInt(initialSpace[1])) === 1)
-    {return true}
+    startingX = parseInt(initialSpace[0])
+    startingY = parseInt(initialSpace[1])
+    endingX = parseInt(newSpace[0])
+    endingY = parseInt(newSpace[1])
+    xDifference = Math.abs(endingX - startingX)
+    yDifference = Math.abs(endingY - startingY)
+    newSpaceElement = document.getElementById(`${endingX}${endingY}`)
 
-    else {return false}
+    // Check that knight moves in L pattern
+    if (xDifference === yDifference) {
+        return false
+    }
+    // Check that change in x or y exceeds 0
+    if (xDifference === 0 || yDifference === 0) {
+        return false
+    }
+    // Check that change in x or y does not exceed 2
+    if (xDifference > 2 || yDifference > 2) {
+        return false
+    }
+    // Check that x does not equal y
+    if (Math.abs(xDifference - yDifference) != 1) {
+        return false
+    }
+    // Check not taking piece of same color
+    if (pieceType[0] === newSpaceElement.innerText[0]) {
+        return false
+    }
+    // Check that knight doesn't take self
+    if (startingX === endingX && startingY === endingY) {
+        return false
+    }
+
+    return true
 }
 
 function bishopValidation(initialSpace, newSpace, pieceType) {
     startingX = parseInt(initialSpace[0])
     startingY = parseInt(initialSpace[1])
-
     endingX = parseInt(newSpace[0])
     endingY = parseInt(newSpace[1])
-
     xDifference = endingX - startingX
     yDifference = endingY - startingY
+    newSpaceElement = document.getElementById(`${endingX}${endingY}`)
 
     // Verify bishop moving in a diagonal pattern
     if (Math.abs(xDifference) !== Math.abs(yDifference)) {
@@ -120,8 +132,6 @@ function bishopValidation(initialSpace, newSpace, pieceType) {
     if (!checkBishopDiagonalPath(startingX, startingY, xDifference, yDifference)) {
         return false
     }
-
-    newSpaceElement = document.getElementById(`${endingX}${endingY}`)
     
     // Check not taking piece of same color
     if (pieceType[0] === newSpaceElement.innerText[0]) {
@@ -210,7 +220,17 @@ function queenValidation(initialSpace, newSpace, pieceType) {
 
 function kingValidation(initialSpace, newSpace, pieceType) {
 
-    // Check & CheckMate
+    startingX = parseInt(initialSpace[0])
+    startingY = parseInt(initialSpace[1])
 
-    // Castling
+    endingX = parseInt(newSpace[0])
+    endingY = parseInt(newSpace[1])
+
+    // Check king move 1 space around
+    if (endingX !== startingX + 1 || startingX - 1) {
+        return false
+    }
+
+
+    return true
 }
