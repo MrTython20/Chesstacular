@@ -17,11 +17,31 @@ function insertImage() {
 
 function checkMove(initialSpace, newSpace, pieceType) {
     console.log(initialSpace, newSpace, pieceType)
+    // Pawn validation
     if (pieceType === "Wpawn" || pieceType === "Bpawn") {
-        if (pawnValidation(initialSpace, newSpace, pieceType)) {return true}
+        return (pawnValidation(initialSpace, newSpace, pieceType))
+    }
+    // Knight validation
+    if (pieceType === "Wknight" || pieceType === "Bknight") {
+        return (knightValidation(initialSpace, newSpace, pieceType))
+    }
+    // Bishop validation
+    if (pieceType === "Wbishop" || pieceType === "Bbishop") {
+        return bishopValidation(initialSpace, newSpace, pieceType)
+    }
+    // Rook validation
+    if (pieceType === "Wrook" || pieceType === "Brook") {
+        return (rookValidation(initialSpace, newSpace, pieceType))
+    }
+    // Queen validation
+    if (pieceType === "Wqueen" || pieceType === "Bqueen") {
+        return (queenValidation(initialSpace, newSpace, pieceType))
+    }
+    // King validation
+    if (pieceType === "Wking" || pieceType === "Bking") {
+        return (kingValidation(initialSpace, newSpace, pieceType))
     }
 }
-
 
 insertImage()
 
