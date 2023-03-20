@@ -16,7 +16,6 @@ function insertImage() {
 
 
 function checkMove(initialSpace, newSpace, pieceType) {
-    console.log(initialSpace, newSpace, pieceType)
     // Pawn validation
     if (pieceType === "Wpawn" || pieceType === "Bpawn") {
         return (pawnValidation(initialSpace, newSpace, pieceType))
@@ -51,7 +50,6 @@ document.querySelectorAll('.lightbox, .darkbox').forEach(square => {
 
     square.addEventListener('click', function () {
         timesClicked++
-        console.log(timesClicked)
         if (timesClicked == 1) {
             originalSquareId = square.id
             originalSquareText = square.innerText
@@ -66,7 +64,6 @@ document.querySelectorAll('.lightbox, .darkbox').forEach(square => {
             }
             else {
                 timesClicked = 0
-                console.log("move is invalid")
             }
             
         }

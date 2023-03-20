@@ -165,7 +165,6 @@ function rookValidation(initialSpace, newSpace, pieceType) {
 
     if (initialSpace[1] === newSpace[1] && initialSpace[0] < newSpace[0]) { // Rook is moving on x axis right
         for (i = parseInt(initialSpace[0]) + 1; i <= parseInt(newSpace[0]); i++) { // Loop through spaces
-            console.log(i, parseInt(newSpace[1]))
             if (document.getElementById(i + newSpace[1]).innerText !== "") { // If space is not empty
                 if (i === parseInt(newSpace[0])) {  // If last space
                     if (document.getElementById(newSpace[0] + newSpace[1]).innerText[0] === pieceType[0]) {return false} // If own color return false
@@ -199,7 +198,6 @@ function rookValidation(initialSpace, newSpace, pieceType) {
 
     if (initialSpace[0] === newSpace[0] && initialSpace[1] > newSpace[1]) { // Rook is moving on y axis backward
         for (i = parseInt(initialSpace[1]) - 1; i >= parseInt(newSpace[1]); i--) { // Loop through spaces
-            console.log(initialSpace[0], i)
             if (document.getElementById(initialSpace[0] + i).innerText !== "") { // If space is not empty
                 if (i === parseInt(newSpace[1])) {  // If last space
                     if (document.getElementById(newSpace[0] + newSpace[1]).innerText[0] === pieceType[0]) {return false} // If own color return false
