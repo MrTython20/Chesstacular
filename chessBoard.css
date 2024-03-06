@@ -21,13 +21,6 @@ ul {
     flex-direction: row;
 }
 
-.header-div {
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .board {
     display: grid;
 }
