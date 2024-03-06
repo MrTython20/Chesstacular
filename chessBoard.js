@@ -2,18 +2,15 @@
 function insertImage() {
     document.querySelectorAll('.lightbox, .darkbox').forEach(square => {
         if (square.innerText.length !== 0) {
-            if (square.innerText == "Wpawn" || square.innerText == "Bpawn") 
-            {
+            if (square.innerText == "Wpawn" || square.innerText == "Bpawn") {
                 square.innerHTML = `${square.innerText} <img class='all-pwn' src="assets/${square.innerText}.png" alt="">`
             }
-            else 
-            {
+            else {
                 square.innerHTML = `${square.innerText} <img class='all-img' src="assets/${square.innerText}.png" alt="">`
             }
         }
     })
 }
-
 
 function checkMove(initialSpace, newSpace, pieceType) {
     // Pawn validation
