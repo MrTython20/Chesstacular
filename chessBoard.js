@@ -1,4 +1,3 @@
-
 function insertImage() {
     document.querySelectorAll('.lightbox, .darkbox').forEach(square => {
         if (square.innerText.length !== 0) {
