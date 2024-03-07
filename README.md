@@ -1,2 +1,2 @@
 # chesstacular
-Peter &amp; Tyler's Chess Game
+Tyler's Chess Game
