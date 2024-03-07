@@ -38,7 +38,6 @@ function checkMove(initialSpace, newSpace, pieceType) {
         return (kingValidation(initialSpace, newSpace, pieceType))
     }
 }
-
 insertImage()
 
 var timesClicked = 0
@@ -61,10 +60,7 @@ document.querySelectorAll('.lightbox, .darkbox').forEach(square => {
             }
             else {
                 timesClicked = 0
-            }
-            
+            }   
         }
-
     })
-
 })
