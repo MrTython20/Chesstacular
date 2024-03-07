@@ -1,2 +1,2 @@
-# chesstacular
+# Chesstacular
 Tyler's Chess Game
