@@ -32,6 +32,5 @@ function knightValidation(initialSpace, newSpace, pieceType) {
     if (startingX === endingX && startingY === endingY) {
         return false
     }
-
     return true
 }

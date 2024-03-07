@@ -1,4 +1,5 @@
 function bishopValidation(initialSpace, newSpace, pieceType) {
+    
     startingX = parseInt(initialSpace[0])
     startingY = parseInt(initialSpace[1])
     endingX = parseInt(newSpace[0])
@@ -11,21 +12,17 @@ function bishopValidation(initialSpace, newSpace, pieceType) {
     if (Math.abs(xDifference) !== Math.abs(yDifference)) {
         return false
     }
-
     // Check not taking self
     if (startingX === endingX && startingY === endingY) {
         return false
     }
-
     if (!checkBishopDiagonalPath(startingX, startingY, xDifference, yDifference)) {
         return false
     }
-    
     // Check not taking piece of same color
     if (pieceType[0] === newSpaceElement.innerText[0]) {
         return false
     }
-
     return true
 }
 
@@ -43,6 +40,5 @@ function checkBishopDiagonalPath(startingX, startingY, xDifference, yDifference)
             return false
         }
     }
-
     return true
 }
