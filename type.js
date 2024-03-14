@@ -1,6 +1,6 @@
 const Type = Object.freeze({
   PAWN: "pawn",
-  KNIGTH: "knight",
+  KNIGHT: "knight",
   ROOK: "rook",
   BISHOP: "bishop",
   QUEEN: "queen",
